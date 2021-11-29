@@ -92,25 +92,12 @@ input[type="range"]::-webkit-slider-thumb {
 <input id="rng" type="range" min="-70"  max="70" step="0" value="-70" oninput="setVolMove()">
 </div>
 <script>
-
-  let audioContext;
-
-try {
-  audioContext =
-    new (window.AudioContext || window.webkitAudioContext)();
-} catch (error) {
-  window.alert(
-    `Sorry, but your browser doesn't support the Web Audio API!`
-  );
-}
-
-if (audioContext !== undefined) {
-  const oscillator = audioContext.createOscillator();
+audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const oscillator = audioContext.createOscillator();
 oscillator.type = 'sine';
-oscillator.frequency.value = 500;
+oscillator.frequency.value = 1000;
 oscillator.connect(audioContext.destination);
 oscillator.start();
-}
 
 
   var rang = document.getElementById('rng');
