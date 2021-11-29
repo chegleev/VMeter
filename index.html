@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<title>VMeter</title>
+<style>
+body {
+  background: #2980b9;
+}
+#all {
+  position: absolute;
+  margin: -190px 0 0 -190px;
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+}
+#circle {
+  z-index: 0;
+  position: absolute;
+  margin: -190px 0 0 -190px;
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(#ecf0f1 60%, #00000000 40%);
+  border-radius: 100%;
+}
+#minicircle {
+  z-index: 2;
+  position: absolute;
+  margin: -20px 0 0 -20px;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  background: #e74c3c;
+  border-radius: 100%;
+}
+:root {
+  --angle: -70deg;
+  --lin:  -70deg;
+}
+#arrow {
+  z-index: 1;
+  position: absolute;
+  margin: -180px 0 0 -2px;
+  width: 4px;
+  height: 360px;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(#e74c3c 60%, #00000000 40%);
+  transform: rotate(var(--angle));
+}
+#rng {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 100vw;
+  height: 5px;
+  -webkit-appearance: none;
+  margin: 350px 0 0 -175px;
+  left: 50%;
+  width: 350px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 100vw;
+  background: #ffffff;
+}
+#line j {
+  z-index: 1;
+  position: absolute;
+  margin: -190px 0 0 -4px;
+  width: 8px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(to bottom, #000000 20px, #00000000 20px 360px, #00000000 360px);
+  transform: rotate(var(--lin)) scale(0.95);
+}
+</style>
+</head>
+<body>
+<div id="all">
+<div id="line"></div>
+<div id="circle"></div>
+<div id="minicircle"></div>
+<div id="arrow"></div>
+<input id="rng" type="range" min="-70"  max="70" step="0" value="-70" oninput="setVolMove()">
+</div>
+<script>
+  var rang = document.getElementById('rng');
+  var sect = document.querySelector('#arrow');
+
+  const section = document.querySelector('#line');
+  const v = (new Array(16)).fill().map(e => (e = document.createElement('j')) && section.appendChild(e) && e);
+  var c = -70;
+
+  for(var i=0; i<15; i++) {
+    v[i].style.setProperty('--lin', c + 'deg');
+    c+=10;
+  }
+
+  function setVolMove() {
+    sect.style.setProperty('--angle', rang.value + 'deg');
+  }
+</script>
+</body> 
+</html>
