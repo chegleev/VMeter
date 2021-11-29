@@ -122,7 +122,12 @@ oscillator.start();
 
   function setVolMove() {
     sect.style.setProperty('--angle', rang.value + 'deg');
-    oscillator.frequency.value = freq + 70 + Math.abs(rang.value);
+    if(rang.value < 0) {
+      freq = (70-rang.value);
+    } else {
+      freq = (70+rang.value);
+    }
+    oscillator.frequency.value = freq;
   }
 </script>
 </body> 
