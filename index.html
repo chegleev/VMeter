@@ -107,7 +107,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 </style>
 </head>
-<body onload="startSound()">
+<body>
 <div id="all">
 <div id="line"></div>
 <div id="digits"></div>
@@ -127,6 +127,7 @@ input[type="range"]::-webkit-slider-thumb {
   oscillator.type = "sine";
   oscillator.frequency.value = 0;
   oscillator.connect(audioContext.destination);
+  oscillator.start();
 
   var rang = document.getElementById('rng');
   var sect = document.querySelector('#arrow');
@@ -154,9 +155,9 @@ input[type="range"]::-webkit-slider-thumb {
     c+=10;
   }
 
-  function startSound() {
+  /*function startSound() {
     oscillator.start();
-  }
+  }*/
 
   function setVolMove() {
     sect.style.setProperty('--angle', rang.value + 'deg');
