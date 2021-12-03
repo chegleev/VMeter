@@ -112,16 +112,16 @@ input[type="range"]::-webkit-slider-thumb {
 <div id="line"></div>
 <div id="digits"></div>
 <div id="txt">VMeter</div>
-<div id="circle" onclick="cl()"></div>
+<div id="circle"></div>
 <div id="minicircle"></div>
 <div id="arrow"></div>
 <input id="rng" type="range" min="-70"  max="70" step="0" value="-70" oninput="setVolMove()">
 </div>
 <script>
-  var AudioContext;
+  //var AudioContext;
   var audioContext;
   var oscillator;
-  AudioContext = window.AudioContext || window.webkitAudioContext;
+  //AudioContext = window.AudioContext || window.webkitAudioContext;
   audioContext = new AudioContext();
   oscillator = audioContext.createOscillator();
   oscillator.type = "sine";
